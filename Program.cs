@@ -1,7 +1,17 @@
+using ShopLineWebApplication.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddHttpClient<ICategoryService, CategoryService>();
+
+
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddHttpClient<IProductService, ProductService>();
 
 var app = builder.Build();
 
