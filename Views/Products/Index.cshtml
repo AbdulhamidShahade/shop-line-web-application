@@ -1,0 +1,21 @@
+﻿@model List<ShopLineWebApplication.Models.Product>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var product in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <a asp-controller="Products" asp-action="Details" asp-route-point="@product.Category" asp-route-barcode="@product.Meta.Barcode"><img src="@product.Images.FirstOrDefault()" class="card-img-top" alt="@product.Title"></a>
+                    <div class="card-header">
+                        <h5>@product.Title</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@product.Category</li>
+                        <li class="list-group-item">@product.Price</li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
